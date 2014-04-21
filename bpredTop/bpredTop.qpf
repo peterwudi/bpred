@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------- #
 #
-# Copyright (C) 1991-2012 Altera Corporation
+# Copyright (C) 1991-2013 Altera Corporation
 # Your use of Altera Corporation's design tools, logic functions 
 # and other software and tools, and its AMPP partner logic 
 # functions, and any output files from any of the foregoing 
@@ -17,28 +17,14 @@
 # -------------------------------------------------------------------------- #
 #
 # Quartus II 64-Bit
-# Version 12.1 Build 177 11/07/2012 SJ Full Version
-# Date created = 18:51:30  March 11, 2013
-#
-# -------------------------------------------------------------------------- #
-#
-# Notes:
-#
-# 1) The default values for assignments are stored in the file:
-#		__dse_temp_rev_2_assignment_defaults.qdf
-#    If this file doesn't exist, see file:
-#		assignment_defaults.qdf
-#
-# 2) Altera recommends that you do not modify this file. This
-#    file is updated automatically by the Quartus II software
-#    and any changes you make may be lost or overwritten.
+# Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+# Date created = 14:56:32  April 21, 2014
 #
 # -------------------------------------------------------------------------- #
 
+QUARTUS_VERSION = "13.0"
+DATE = "14:56:32  April 21, 2014"
 
-set_global_assignment -name FAMILY "Cyclone IV GX"
-set_global_assignment -name DEVICE AUTO
-set_global_assignment -name TOP_LEVEL_ENTITY __dse_temp_rev_2
-set_global_assignment -name ORIGINAL_QUARTUS_VERSION 12.1
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "18:51:30  MARCH 11, 2013"
-set_global_assignment -name LAST_QUARTUS_VERSION 12.1
+# Revisions
+
+PROJECT_REVISION = "bpredTop"

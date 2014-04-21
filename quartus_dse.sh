@@ -1,5 +1,5 @@
-PF="bpredTop.qpf"
-TM="bpredTop"
+PF="BP.qpf"
+TM="BP"
 
 for seed in 0 1 2 3 4
 do
@@ -8,7 +8,7 @@ do
 	quartus_fit $PF --seed $seed
 	quartus_sta $PF
 
-	mv output_files/$TM.map.rpt output_files/$seed.$TM.map.rpt
-	mv output_files/$TM.fit.rpt output_files/$seed.$TM.fit.rpt
-	mv output_files/$TM.sta.rpt output_files/$seed.$TM.sta.rpt
+	mv $TM.map.rpt output_files/$seed.$TM.map.rpt
+	mv $TM.fit.rpt output_files/$seed.$TM.fit.rpt
+	mv $TM.sta.rpt output_files/$seed.$TM.sta.rpt
 done

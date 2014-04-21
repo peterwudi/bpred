@@ -41,7 +41,7 @@ set_global_assignment -name DEVICE EP4SE230F29C2
 set_global_assignment -name TOP_LEVEL_ENTITY bpredTop
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 12.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "23:06:08  DECEMBER 20, 2012"
-set_global_assignment -name LAST_QUARTUS_VERSION 12.1
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name QIP_FILE mem.qip
 set_global_assignment -name QIP_FILE insnMem.qip
 set_global_assignment -name MIF_FILE insnMem.mif
