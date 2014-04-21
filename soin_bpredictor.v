@@ -39,38 +39,38 @@ fetch_bpredictor_inst is to be used after clock edge
 reg										branch_is;
 reg										branch_cond;
 reg										target_computable;
-reg		[31:0]							computed_target;
-wire									branch_ok;
+reg	[31:0]							computed_target;
+wire										branch_ok;
 
-reg		[31:0]							PC;
-reg		[31:0]							PC4;
-reg		[3:0]							PCH4;
-reg		[7:0]							GHR;
+reg	[31:0]							PC;
+reg	[31:0]							PC4;
+reg	[3:0]								PCH4;
+reg	[11:0]							GHR;
 
 wire	[31:0]							OPERAND_IMM16S;
 wire	[31:0]							OPERAND_IMM26;
 wire	[31:0]							TARGET_IMM16S;
 wire	[31:0]							TARGET_IMM26;
 
-wire	[7:0]							lu_index;
-reg		[7:0]							lu_index_r;
+wire	[11:0]							lu_index;
+reg	[11:0]							lu_index_r;
 wire	[31:0]							lu_data;
 
-wire	[7:0]							up_index;
+wire	[11:0]							up_index;
 wire	[31:0]							up_data;
-wire									up_wen;
-wire	[3:0]							up_be;
+wire										up_wen;
+wire	[3:0]								up_be;
 
-wire	[1:0]							lu_bimodal_data;
+wire	[1:0]								lu_bimodal_data;
 reg										lu_bimodal_data_h;
-wire	[7:0]							lu_bimodal_datas;
-reg		[1:0]							up_bimodal_data;
-reg		[7:0]							lu_bimodal_bun;
+wire	[7:0]								lu_bimodal_datas;
+reg	[1:0]								up_bimodal_data;
+reg	[7:0]								lu_bimodal_bun;
 
-wire									p_taken;
-reg		[31:0]							p_target;
+wire										p_taken;
+reg	[31:0]							p_target;
 
-wire	[3:0]							ras_index;
+wire	[3:0]								ras_index;
 wire	[31:0]							ras_top_addr;
 
 wire									is_branch;
@@ -101,12 +101,12 @@ assign bpredictor_fetch_meta			= {ras_index, lu_bimodal_datas, lu_index_r};
 //=====================================
 
 //soin_KMem_be #(.WIDTH(32), .DEPTH_L(8)) bimodal_mem
-BRAM_32_8 bimodal_mem
+BRAM32x512 bimodal_mem
 (
 	.clock								(clk),
 
 	.rdaddress							(lu_index),
-	.q									(lu_data),
+	.q										(lu_data),
 
 	.byteena_a							(up_be),
 	.wraddress							(up_index),
@@ -291,33 +291,12 @@ begin
 		lu_index_r						<= lu_index;
 		
 		if (execute_bpredictor_update)
-			GHR							<= {GHR[6:0], execute_bpredictor_dir};
+			GHR							<= {GHR[10:0], execute_bpredictor_dir};
 	end
 end
 
 
 endmodule
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -412,40 +391,6 @@ always@( * )
 always@( * )
 	is_p_call							= inst[27];
 endmodule
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module soin_bpredictor_ras(

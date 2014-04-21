@@ -444,14 +444,22 @@ set_instance_assignment -name GLOBAL_SIGNAL OFF -to u0|uniphy_ddr2|p0|controller
 set_instance_assignment -name ENABLE_BENEFICIAL_SKEW_OPTIMIZATION_FOR_NON_GLOBAL_CLOCKS ON -to u0|uniphy_ddr2|p0
 set_instance_assignment -name PLL_ENFORCE_USER_PHASE_SHIFT ON -to u0|uniphy_ddr2|p0|controller_phy_inst|memphy_top_inst|upll_memphy|altpll_component|auto_generated|pll1
 set_global_assignment -name SEED 4
+set_global_assignment -name PHYSICAL_SYNTHESIS_COMBO_LOGIC ON
+set_global_assignment -name PHYSICAL_SYNTHESIS_REGISTER_RETIMING ON
+set_global_assignment -name PHYSICAL_SYNTHESIS_COMBO_LOGIC_FOR_AREA OFF
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name VERILOG_FILE soin_bpredictor.v
+set_global_assignment -name VERILOG_FILE soin_header.v
 set_global_assignment -name VERILOG_FILE BRAM_32_8.v
 set_global_assignment -name SYSTEMVERILOG_FILE BP.sv
 set_global_assignment -name SDC_FILE SDC1.sdc
 set_global_assignment -name VERILOG_FILE S2P.v
-set_global_assignment -name PHYSICAL_SYNTHESIS_COMBO_LOGIC OFF
-set_global_assignment -name PHYSICAL_SYNTHESIS_REGISTER_RETIMING OFF
-set_global_assignment -name PHYSICAL_SYNTHESIS_COMBO_LOGIC_FOR_AREA OFF
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name QIP_FILE BRAM32x4k.qip
+set_global_assignment -name QIP_FILE BRAM32x2k.qip
+set_global_assignment -name QIP_FILE BRAM32x1k.qip
+set_global_assignment -name QIP_FILE BRAM32x512.qip
+set_global_assignment -name PHYSICAL_SYNTHESIS_ASYNCHRONOUS_SIGNAL_PIPELINING ON
+set_global_assignment -name PHYSICAL_SYNTHESIS_REGISTER_DUPLICATION ON
+set_global_assignment -name PHYSICAL_SYNTHESIS_MAP_LOGIC_TO_MEMORY_FOR_AREA OFF
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -8,7 +8,7 @@ do
 	quartus_fit $PF --seed $seed
 	quartus_sta $PF
 
-	mv $TM.map.rpt output_files/$seed.$TM.map.rpt
+	#mv $TM.map.rpt output_files/$seed.$TM.map.rpt
 	mv $TM.fit.rpt output_files/$seed.$TM.fit.rpt
 	mv $TM.sta.rpt output_files/$seed.$TM.sta.rpt
 done
