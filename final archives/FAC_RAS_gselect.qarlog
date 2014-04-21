@@ -1,0 +1,29 @@
+Quartus II Archive log --	E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/FAC_RAS_gselect.qarlog
+
+Archive:	E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/FAC_RAS_gselect.qar
+Date:		Tue Mar 05 11:25:58 2013
+Quartus II 64-Bit		12.1 Build 177 11/07/2012 SJ Full Version
+
+	=========== Files Selected: ===========
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/__dse_temp_rev.qsf
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/__dse_temp_rev_2.qsf
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/assignment_defaults.qdf
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/bpredTop.qpf
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/bpredTop.qsf
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/bpredTop.sdc
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/bpredTop.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/header.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/incremental_db/compiled_partitions/bpredTop.db_info
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/insnMem.mif
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/insnMem.qip
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/insnMem.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/insnMem_bb.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/mem.mif
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/mem.qip
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/mem.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/mem_bb.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_gselect_restored/test.v
+	======= Total: 18 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

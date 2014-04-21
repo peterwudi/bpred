@@ -1,0 +1,35 @@
+Quartus II Archive log --	E:/University of Toronto/masters/bpred/BTB_PAC_bimodal.qarlog
+
+Archive:	E:/University of Toronto/masters/bpred/BTB_PAC_bimodal.qar
+Date:		Mon Mar 04 13:35:48 2013
+Quartus II 64-Bit		12.1 Build 177 11/07/2012 SJ Full Version
+
+	=========== Files Selected: ===========
+E:/University of Toronto/masters/bpred/__dse_temp_rev.qsf
+E:/University of Toronto/masters/bpred/__dse_temp_rev_2.qsf
+E:/University of Toronto/masters/bpred/bpredTop.qpf
+E:/University of Toronto/masters/bpred/bpredTop.qsf
+E:/University of Toronto/masters/bpred/bpredTop.sdc
+E:/University of Toronto/masters/bpred/bpredTop.v
+E:/University of Toronto/masters/bpred/header.v
+E:/University of Toronto/masters/bpred/incremental_db/compiled_partitions/bpredTop.db_info
+E:/University of Toronto/masters/bpred/insnMem.mif
+E:/University of Toronto/masters/bpred/insnMem.qip
+E:/University of Toronto/masters/bpred/insnMem.v
+E:/University of Toronto/masters/bpred/insnMem_bb.v
+E:/University of Toronto/masters/bpred/mem.mif
+E:/University of Toronto/masters/bpred/mem.qip
+E:/University of Toronto/masters/bpred/mem.v
+E:/University of Toronto/masters/bpred/mem_bb.v
+E:/University of Toronto/masters/bpred/test.v
+d:/altera/12.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 18 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Sun Mar 10 21:26:54 2013
+Source archive file:	E:/University of Toronto/masters/bpred/final archives/BTB_PAC_bimodal.qar
+Archive was extracted into	E:/University of Toronto/masters/bpred/final archives/BTB_PAC_bimodal_restored/
+		 - successfully.

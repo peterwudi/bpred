@@ -1,0 +1,29 @@
+Quartus II Archive log --	E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/FAC_RAS_bimodal.qarlog
+
+Archive:	E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/FAC_RAS_bimodal.qar
+Date:		Tue Mar 05 10:43:07 2013
+Quartus II 64-Bit		12.1 Build 177 11/07/2012 SJ Full Version
+
+	=========== Files Selected: ===========
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/__dse_temp_rev.qsf
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/__dse_temp_rev_2.qsf
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/assignment_defaults.qdf
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/bpredTop.qpf
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/bpredTop.qsf
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/bpredTop.sdc
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/bpredTop.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/header.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/incremental_db/compiled_partitions/bpredTop.db_info
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/insnMem.mif
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/insnMem.qip
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/insnMem.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/insnMem_bb.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/mem.mif
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/mem.qip
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/mem.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/mem_bb.v
+E:/University of Toronto/masters/bpred/final archives/FAC_RAS_bimodal_restored/test.v
+	======= Total: 18 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

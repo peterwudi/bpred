@@ -1,0 +1,52 @@
+PC and instruction BOTH available at the begining of the cycle, therefore the
+actual clock period need to add the time of fetching insturnction from
+instruction cache/memory.
+
+V1: 463.39MHz (Slow 900mV 85C), clk set to 550MHz
+calculate PC+4, PC+4+IMM16
+use BTB for direct and indirect jmp
+
+BTB 256 entries * 36 bits/entry, no BTB tags (prediction may be for a different PC but it's OK)
+Each entry contains PC[31:2], bimodal not included
+
+
+V2: 522.19MHz (Slow 900mV 85C), clk set to 550 MHz
+No btb, only calculate PC+4 and PC+4+IMM16
+
+
+V3: 449.44MHz (Slow 900mV 85C), clk set to 550MHz
+calculate PC+4, PC+4+IMM16, and direct JMP
+use BTB for indirect JMP
+
+
+=====================================================================
+
+
+baseline BTB+bimodal, no calculation: 360.49MHz
+BTB size 36*256, 1 "byte" = 9 bits
+carry lower 9 bits in the pipeline, the last 6 bits are bimodal bits
+PC = taken ? BTB result : PC+4
+
+
+baseline with 512/1024/2048 entry BTB has same fmax 360.49MHz
+PC available to insnMem and BTB at the same time. Insn has to be
+pre-decoded to determine if it's a branch, therefore it's the
+critical path.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
