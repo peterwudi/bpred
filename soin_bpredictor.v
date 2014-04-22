@@ -45,7 +45,7 @@ wire									branch_ok;
 reg		[31:0]							PC;
 reg		[31:0]							PC4;
 reg		[3:0]							PCH4;
-reg		[7:0]							GHR;
+//reg		[7:0]							GHR;
 
 wire	[31:0]							OPERAND_IMM16S;
 wire	[31:0]							OPERAND_IMM26;
@@ -56,7 +56,7 @@ wire	[15:0]							lu_index;
 reg		[15:0]							lu_index_r;
 wire	[1:0]							lu_data;
 
-wire	[15:0]							up_index;
+wire	[7:0]							up_index;
 wire	[31:0]							up_data;
 wire									up_wen;
 wire	[3:0]							up_be;
@@ -151,7 +151,7 @@ soin_bpredictor_ras ras_inst(
 //=====================================
 
 //assign lu_index							= GHR;
-assign lu_index						= {p_target[9:2], GHR[7:0]};
+assign lu_index						= p_target[17:2];
 
 
 assign up_index							= execute_bpredictor_meta[11:0];
@@ -345,20 +345,13 @@ end
 
 always@(posedge clk)
 begin
-	if (reset)
-	begin
-		GHR								<= 0;
-	end
-	else
+	if (!reset)
 	begin
 		PCH4							<= fetch_bpredictor_PC[31:28];
 		PC								<= fetch_bpredictor_PC;
 //		PC4								<= {fetch_bpredictor_PC[31:16], fetch_bpredictor_PC[15:0] + 16'h4};
 		lu_index_r						<= lu_index;
-		
-		if (execute_bpredictor_update)
-			GHR							<= {GHR[6:0], execute_bpredictor_dir};
-	end
+	end	
 end
 
 
