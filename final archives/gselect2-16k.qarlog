@@ -1,0 +1,39 @@
+Quartus II Archive log --	E:/University of Toronto/masters/bpred/gselect2-16k.qarlog
+
+Archive:	E:/University of Toronto/masters/bpred/gselect2-16k.qar
+Date:		Mon Apr 21 23:41:49 2014
+Quartus II 64-Bit		13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+
+	=========== Files Selected: ===========
+E:/University of Toronto/masters/bpred/BP.qpf
+E:/University of Toronto/masters/bpred/BP.qsf
+E:/University of Toronto/masters/bpred/BP.sv
+E:/University of Toronto/masters/bpred/BP_assignment_defaults.qdf
+E:/University of Toronto/masters/bpred/BRAM32x1k.qip
+E:/University of Toronto/masters/bpred/BRAM32x1k.v
+E:/University of Toronto/masters/bpred/BRAM32x2k.qip
+E:/University of Toronto/masters/bpred/BRAM32x2k.v
+E:/University of Toronto/masters/bpred/BRAM32x4k.qip
+E:/University of Toronto/masters/bpred/BRAM32x4k.v
+E:/University of Toronto/masters/bpred/BRAM32x512.qip
+E:/University of Toronto/masters/bpred/BRAM32x512.v
+E:/University of Toronto/masters/bpred/BRAM_32_8.v
+E:/University of Toronto/masters/bpred/MLAB_32_4.v
+E:/University of Toronto/masters/bpred/S2P.v
+E:/University of Toronto/masters/bpred/SDC1.sdc
+E:/University of Toronto/masters/bpred/incremental_db/compiled_partitions/BP.db_info
+E:/University of Toronto/masters/bpred/mem.v
+E:/University of Toronto/masters/bpred/mem2x16k.qip
+E:/University of Toronto/masters/bpred/mem2x16k.v
+E:/University of Toronto/masters/bpred/mem2x32k.qip
+E:/University of Toronto/masters/bpred/mem2x32k.v
+E:/University of Toronto/masters/bpred/mem2x64k.qip
+E:/University of Toronto/masters/bpred/mem2x64k.v
+E:/University of Toronto/masters/bpred/mem2x8k.qip
+E:/University of Toronto/masters/bpred/mem2x8k.v
+E:/University of Toronto/masters/bpred/soin_bpredictor.v
+E:/University of Toronto/masters/bpred/soin_header.v
+	======= Total: 28 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

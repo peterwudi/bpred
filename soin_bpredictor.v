@@ -45,7 +45,7 @@ wire									branch_ok;
 reg		[31:0]							PC;
 reg		[31:0]							PC4;
 reg		[3:0]							PCH4;
-reg		[15:0]							GHR;
+reg		[7:0]							GHR;
 
 wire	[31:0]							OPERAND_IMM16S;
 wire	[31:0]							OPERAND_IMM26;
@@ -151,10 +151,10 @@ soin_bpredictor_ras ras_inst(
 //=====================================
 
 //assign lu_index							= GHR;
-assign lu_index						= GHR ^ p_target[17:2];
+assign lu_index						= {p_target[9:2], GHR[7:0]};
 
 
-assign up_index							= execute_bpredictor_meta[15:0];
+assign up_index							= execute_bpredictor_meta[11:0];
 //assign up_data							= {4{execute_bpredictor_meta[8+8-1:8]}};
 assign up_data							= execute_bpredictor_meta[13:12];
 
@@ -170,6 +170,7 @@ reg										lu_bimodal_data_h1;
 reg										lu_bimodal_data_h2;
 reg										lu_bimodal_data_h3;
 
+//assign lu_data_h						= {lu_data[31-0], lu_data[31-2], lu_data[31-4], lu_data[31-6], lu_data[31-8], lu_data[31-10], lu_data[31-12], lu_data[31-14], lu_data[31-16], lu_data[31-18], lu_data[31-20], lu_data[31-22], lu_data[31-24], lu_data[31-26], lu_data[31-28], lu_data[31-30]};
 assign lu_data_h = lu_data[1];
 
 
@@ -181,6 +182,59 @@ always@(*)
 begin
 	PC4									= PC + 4;
 	lu_bimodal_data_h					= lu_data_h;
+	
+//	lu_bimodal_data_h					= (lu_data_h) >> ({PC[5:2]});
+/*
+	case (PC[5:2])
+		4'b0000:	lu_bimodal_data_h 	= lu_data[ 2-1: 0+1];
+		4'b0001:	lu_bimodal_data_h 	= lu_data[ 4-1: 2+1];
+		4'b0010:	lu_bimodal_data_h 	= lu_data[ 6-1: 4+1];
+		4'b0011:	lu_bimodal_data_h 	= lu_data[ 8-1: 6+1];
+
+		4'b0100:	lu_bimodal_data_h 	= lu_data[10-1: 8+1];
+		4'b0101:	lu_bimodal_data_h 	= lu_data[12-1:10+1];
+		4'b0110:	lu_bimodal_data_h 	= lu_data[14-1:12+1];
+		4'b0111:	lu_bimodal_data_h 	= lu_data[16-1:14+1];
+
+		4'b1000:	lu_bimodal_data_h 	= lu_data[18-1:16+1];
+		4'b1001:	lu_bimodal_data_h 	= lu_data[20-1:18+1];
+		4'b1010:	lu_bimodal_data_h 	= lu_data[22-1:20+1];
+		4'b1011:	lu_bimodal_data_h 	= lu_data[24-1:22+1];
+
+		4'b1100:	lu_bimodal_data_h 	= lu_data[26-1:24+1];
+		4'b1101:	lu_bimodal_data_h 	= lu_data[28-1:26+1];
+		4'b1110:	lu_bimodal_data_h 	= lu_data[30-1:28+1];
+		4'b1111:	lu_bimodal_data_h 	= lu_data[32-1:30+1];
+	endcase
+*/
+//	lu_bimodal_data_h					= lu_data_h[PC[5:2]];
+//	lu_bimodal_data_h					= lu_data_h >> PC[5:2];
+
+	
+/*
+	case (PC[5:2])
+		4'b0000:	lu_bimodal_data_h 	= lu_data_h[ 0];
+		4'b0001:	lu_bimodal_data_h 	= lu_data_h[ 1];
+		4'b0010:	lu_bimodal_data_h 	= lu_data_h[ 2];
+		4'b0011:	lu_bimodal_data_h 	= lu_data_h[ 3];
+
+		4'b0100:	lu_bimodal_data_h 	= lu_data_h[ 4];
+		4'b0101:	lu_bimodal_data_h 	= lu_data_h[ 5];
+		4'b0110:	lu_bimodal_data_h 	= lu_data_h[ 6];
+		4'b0111:	lu_bimodal_data_h 	= lu_data_h[ 7];
+
+		4'b1000:	lu_bimodal_data_h 	= lu_data_h[ 8];
+		4'b1001:	lu_bimodal_data_h 	= lu_data_h[ 9];
+		4'b1010:	lu_bimodal_data_h 	= lu_data_h[10];
+		4'b1011:	lu_bimodal_data_h 	= lu_data_h[11];
+
+		4'b1100:	lu_bimodal_data_h 	= lu_data_h[12];
+		4'b1101:	lu_bimodal_data_h 	= lu_data_h[13];
+		4'b1110:	lu_bimodal_data_h 	= lu_data_h[14];
+		4'b1111:	lu_bimodal_data_h 	= lu_data_h[15];
+	endcase
+*/
+
 end
 
 //=====================================
@@ -303,7 +357,7 @@ begin
 		lu_index_r						<= lu_index;
 		
 		if (execute_bpredictor_update)
-			GHR							<= {GHR[14:0], execute_bpredictor_dir};
+			GHR							<= {GHR[6:0], execute_bpredictor_dir};
 	end
 end
 

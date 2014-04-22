@@ -443,7 +443,7 @@ set_instance_assignment -name GLOBAL_SIGNAL OFF -to u0|uniphy_ddr2|p0|controller
 set_instance_assignment -name GLOBAL_SIGNAL OFF -to u0|uniphy_ddr2|p0|controller_phy_inst|memphy_top_inst|umemphy|uread_datapath|reset_n_fifo_wraddress[7]
 set_instance_assignment -name ENABLE_BENEFICIAL_SKEW_OPTIMIZATION_FOR_NON_GLOBAL_CLOCKS ON -to u0|uniphy_ddr2|p0
 set_instance_assignment -name PLL_ENFORCE_USER_PHASE_SHIFT ON -to u0|uniphy_ddr2|p0|controller_phy_inst|memphy_top_inst|upll_memphy|altpll_component|auto_generated|pll1
-set_global_assignment -name SEED 4
+set_global_assignment -name SEED 3
 set_global_assignment -name PHYSICAL_SYNTHESIS_COMBO_LOGIC OFF
 set_global_assignment -name PHYSICAL_SYNTHESIS_REGISTER_RETIMING OFF
 set_global_assignment -name PHYSICAL_SYNTHESIS_COMBO_LOGIC_FOR_AREA OFF
