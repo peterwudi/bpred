@@ -39,38 +39,38 @@ fetch_bpredictor_inst is to be used after clock edge
 reg										branch_is;
 reg										branch_cond;
 reg										target_computable;
-reg	[31:0]							computed_target;
-wire										branch_ok;
+reg		[31:0]							computed_target;
+wire									branch_ok;
 
-reg	[31:0]							PC;
-reg	[31:0]							PC4;
-reg	[3:0]								PCH4;
-reg	[11:0]							GHR;
+reg		[31:0]							PC;
+reg		[31:0]							PC4;
+reg		[3:0]							PCH4;
+reg		[15:0]							GHR;
 
 wire	[31:0]							OPERAND_IMM16S;
 wire	[31:0]							OPERAND_IMM26;
 wire	[31:0]							TARGET_IMM16S;
 wire	[31:0]							TARGET_IMM26;
 
-wire	[11:0]							lu_index;
-reg	[11:0]							lu_index_r;
-wire	[31:0]							lu_data;
+wire	[15:0]							lu_index;
+reg		[15:0]							lu_index_r;
+wire	[1:0]							lu_data;
 
-wire	[11:0]							up_index;
+wire	[15:0]							up_index;
 wire	[31:0]							up_data;
-wire										up_wen;
-wire	[3:0]								up_be;
+wire									up_wen;
+wire	[3:0]							up_be;
 
-wire	[1:0]								lu_bimodal_data;
+wire	[1:0]							lu_bimodal_data;
 reg										lu_bimodal_data_h;
-wire	[7:0]								lu_bimodal_datas;
-reg	[1:0]								up_bimodal_data;
-reg	[7:0]								lu_bimodal_bun;
+//wire	[7:0]							lu_bimodal_datas;
+reg		[1:0]							up_bimodal_data;
+reg		[7:0]							lu_bimodal_bun;
 
-wire										p_taken;
-reg	[31:0]							p_target;
+wire									p_taken;
+reg		[31:0]							p_target;
 
-wire	[3:0]								ras_index;
+wire	[3:0]							ras_index;
 wire	[31:0]							ras_top_addr;
 
 wire									is_branch;
@@ -94,21 +94,22 @@ assign bpredictor_soin_debug			= 0;
 
 assign bpredictor_fetch_p_dir			= p_taken;
 assign bpredictor_fetch_p_target		= p_target;
-assign bpredictor_fetch_meta			= {ras_index, lu_bimodal_datas, lu_index_r};
+//assign bpredictor_fetch_meta			= {ras_index, lu_bimodal_datas, lu_index_r};
+assign bpredictor_fetch_meta			= {ras_index, lu_bimodal_data, lu_index_r};
 
 //=====================================
 // Instantiations
 //=====================================
 
 //soin_KMem_be #(.WIDTH(32), .DEPTH_L(8)) bimodal_mem
-BRAM32x512 bimodal_mem
+mem2x8k bimodal_mem
 (
 	.clock								(clk),
 
 	.rdaddress							(lu_index),
-	.q										(lu_data),
+	.q									(lu_data),
 
-	.byteena_a							(up_be),
+//	.byteena_a							(up_be),
 	.wraddress							(up_index),
 	.data								(up_data),
 	.wren								(up_wen)
@@ -139,7 +140,7 @@ soin_bpredictor_ras ras_inst(
 	.f_ret								(is_p_ret),
 
 	.e_recover							(execute_bpredictor_recover_ras),
-	.e_recover_index					(execute_bpredictor_meta[8+8+4+4-1:8+8+4]),
+	.e_recover_index					(execute_bpredictor_meta[17:14]),
 
 	.ras_index							(ras_index),
 	.top_addr							(ras_top_addr)
@@ -149,32 +150,37 @@ soin_bpredictor_ras ras_inst(
 // Direction
 //=====================================
 
-assign lu_index							= GHR;
+//assign lu_index							= GHR;
+assign lu_index						= GHR ^ p_target[17:2];
 
-assign up_index							= execute_bpredictor_meta[7:0];
-assign up_data							= {4{execute_bpredictor_meta[8+8-1:8]}};
-assign up_be							= execute_bpredictor_meta[8+8+4-1:8+8];
+
+assign up_index							= execute_bpredictor_meta[15:0];
+//assign up_data							= {4{execute_bpredictor_meta[8+8-1:8]}};
+assign up_data							= execute_bpredictor_meta[13:12];
+
+//assign up_be							= execute_bpredictor_meta[8+8+4-1:8+8];
 assign up_wen							= execute_bpredictor_update;
 
-assign p_taken							= is_p_uncond | lu_bimodal_data_h;
+//assign p_taken							= is_p_uncond | lu_bimodal_data_h;
+assign p_taken							= is_branch & (is_cond | is_call | is_ret) & lu_bimodal_data_h;
 
-wire	[15:0]							lu_data_h;
+wire										lu_data_h;
 reg										lu_bimodal_data_h0;
 reg										lu_bimodal_data_h1;
 reg										lu_bimodal_data_h2;
 reg										lu_bimodal_data_h3;
 
-assign lu_data_h						= {lu_data[31-0], lu_data[31-2], lu_data[31-4], lu_data[31-6], lu_data[31-8], lu_data[31-10], lu_data[31-12], lu_data[31-14], lu_data[31-16], lu_data[31-18], lu_data[31-20], lu_data[31-22], lu_data[31-24], lu_data[31-26], lu_data[31-28], lu_data[31-30]};
+assign lu_data_h = lu_data[1];
+
 
 //assign lu_bimodal_data					= (lu_data) >> ({PC[5:2], 1'b0});
-assign lu_bimodal_datas					= (lu_data) >> ({PC[5:4], 3'b000});
+//assign lu_bimodal_datas					= (lu_data) >> ({PC[5:4], 3'b000});
 
 
 always@(*)
 begin
 	PC4									= PC + 4;
-	lu_bimodal_data_h					= lu_data_h[PC[5:2]];
-
+	lu_bimodal_data_h					= lu_data_h;
 end
 
 //=====================================
@@ -227,6 +233,30 @@ end
 
 always@(*)
 begin
+
+	if (fetch_redirect) begin
+		p_target = fetch_redirect_PC;
+	end
+	else if (~p_taken) begin
+		p_target = PC4;
+	end
+	else begin
+		if (is_ret) begin
+			p_target = ras_top_addr;
+		end
+		else if (is_cond & is_16) begin
+			p_target = TARGET_IMM16S;
+		end
+		else if (is_cond & is_26) begin
+			p_target = TARGET_IMM26;
+		end
+		else begin
+			p_target = PC4;
+		end
+	end
+
+
+/*
 	casex ({fetch_redirect, is_p_mux & {2{is_p_uncond | p_taken}}})
 		3'b1xx:
 		begin
@@ -249,25 +279,7 @@ begin
 			p_target					= TARGET_IMM26;
 		end
 	endcase
-/*
-	case (is_p_mux & {2{is_p_uncond | p_taken}})
-		2'b00:
-		begin
-			p_target					= PC4;
-		end
-		2'b01:
-		begin
-			p_target					= ras_top_addr;
-		end
-		2'b10:
-		begin
-			p_target					= TARGET_IMM16S;
-		end
-		2'b11:
-		begin
-			p_target					= TARGET_IMM26;
-		end
-	endcase
+
 */
 end
 
@@ -291,12 +303,33 @@ begin
 		lu_index_r						<= lu_index;
 		
 		if (execute_bpredictor_update)
-			GHR							<= {GHR[10:0], execute_bpredictor_dir};
+			GHR							<= {GHR[14:0], execute_bpredictor_dir};
 	end
 end
 
 
 endmodule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -391,6 +424,40 @@ always@( * )
 always@( * )
 	is_p_call							= inst[27];
 endmodule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module soin_bpredictor_ras(
